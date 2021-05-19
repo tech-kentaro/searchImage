@@ -17,7 +17,7 @@
           <h2 class="header__sub" v-if="isInitialized">写真を検索する</h2>
           <h2 class="header__sub not" v-else-if="isNotFound">写真が見つかりませんでした。<br>別の言葉で検索してみてください</h2>
           <div class="header__container">
-            <h2 class="header__title">写真を検索する</h2>
+            <h2 class="header__title fadeUpTrigger">写真を検索する</h2>
             <form class="header__form" @submit.prevent="fetchImagesFromFlickr">
               <input class="header__search" type="search" name="search" placeholder="検索テキストを入力">
               <button class="header__submit" type="submit">
@@ -25,7 +25,9 @@
               </button>
             </form>
             <p class="header__text" v-if="isInitialized">検索してください</p>
-            <p class="header__text" v-else-if="isFetching">検索中です</p>
+            <p class="header__text" v-else-if="isFetching">
+              <span class="loader"></span>
+            </p>
             <p class="header__text" v-else-if="isFailed">データの取得に失敗しました。しばらく時間を置いてから、再度お試しください</p>
             <p class="header__text" v-else-if="isNotFound">写真が見つかりませんでした。<br>別の言葉で検索してみてください</p>
           </div>

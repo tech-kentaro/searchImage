@@ -186,6 +186,8 @@ a {
 
 .header {
   position: relative;
+  height: 100vh;
+  overflow: hidden;
 
   &__image {
     height: 100vh;
@@ -193,6 +195,9 @@ a {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: fixed;
+    width: 100%;
+    top: 0;
 
     &::after {
       content: '';
@@ -328,6 +333,26 @@ a {
   }
 }
 
+.main {
+  position: relative;
+  z-index: 2;
+  background: $base;
+  background-size: 400% 400%;
+  animation: gradient 5s linear infinite;
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
 .gallery {
   &__area {
     padding: 100px 20px;
@@ -352,8 +377,13 @@ a {
 }
 
 .footer {
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  right: 0;
+
   &__copy {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 1%;
     color: $white;

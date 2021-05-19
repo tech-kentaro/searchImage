@@ -146,17 +146,25 @@ const app = Vue.createApp({
       }, 500);
       return false;
     },
-    onScroll: function() {
+    bgAnime: function() {
+      const scroll = $(window).scrollTop();
+      $('.header__image').css({
+        transform: 'scale('+(100 + scroll/10)/100+')',
+        top: - (scroll / 50) + '%',
+      });
+    },
+    pageTop: function() {
       const scroll = $(window).scrollTop();
       if (scroll > 400) {
         $('.global__page-top').addClass('block');
       } else {
         $('.global__page-top').removeClass('block');
       }
-    }
+    },
   },
   created: function() {
-    $(window).on('scroll', this.onScroll)
+    $(window).on('scroll', this.bgAnime);
+    $(window).on('scroll', this.pageTop);
   }
 });
 
