@@ -1,0 +1,35 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+input[type="search"] {
+  border-color: $black;
+}
+
+button {
+  padding: 0;
+  border-color: $black;
+}
+
+* {
+  box-sizing: border-box;
+}

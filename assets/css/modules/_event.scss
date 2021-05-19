@@ -1,0 +1,45 @@
+.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .global {
+    &__container {
+      transform: translateY(210px);
+      box-shadow: 0 -4px 40px -10px rgba(0, 0, 0, .8);
+    }
+
+    &__btn {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: .2s;
+    }
+
+    &__cover {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &__wrapper {
+      visibility: visible;
+    }
+
+    &__title {
+      transform: none;
+      opacity: 1;
+      transition-delay: 0.07s;
+    }
+    &__search {
+      transform: none;
+      opacity: 1;
+      transition-delay: 0.14s;
+    }
+    &__submit {
+      transform: none;
+      opacity: 1;
+      transition-delay: 0.14s;
+    }
+  }
+}
