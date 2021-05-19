@@ -5,7 +5,7 @@ a {
 .createImage {
   width: 150px;
   height: 150px;
-  margin: 1rem;
+  margin: .5rem;
   text-align: center;
 }
 
@@ -138,11 +138,12 @@ a {
     position: fixed;
     right: 20px;
     bottom: 10px;
-    // opacity: 0;
-    // visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
     transition: all .5s;
     writing-mode: vertical-rl;
     animation: pageTop 1s ease-in-out infinite;
+    z-index: 10;
 
     @keyframes pageTop {
       0%,
@@ -213,6 +214,11 @@ a {
     font-size: 2.4rem;
     font-weight: normal;
     letter-spacing: .2rem;
+    text-align: center;
+
+    &.not {
+      font-size: 2rem;
+    }
   }
 
   &__container {
@@ -254,7 +260,7 @@ a {
 
   &__text {
     color: $white;
-    font-size: 1.8rem;
+    font-size: 2rem;
     letter-spacing: .1rem;
     text-align: center;
   }

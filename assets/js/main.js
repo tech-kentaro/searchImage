@@ -53,19 +53,19 @@ const app = Vue.createApp({
   },
   computed: {
     isInitialized: function() {
-      return this.currentState = IS_INITIALIZED;
+      return this.currentState === IS_INITIALIZED;
     },
     isFetching: function() {
-      return this.currentState = IS_FETCHING;
+      return this.currentState === IS_FETCHING;
     },
     isFailed: function() {
-      return this.currentState = IS_FAILED;
+      return this.currentState === IS_FAILED;
     },
     isFound: function() {
-      return this.currentState = IS_FOUND;
+      return this.currentState === IS_FOUND;
     },
     isNotFound: function() {
-      return this.currentState = IS_NOTFOUND;
+      return this.currentState === IS_NOTFOUND;
     },
   },
   methods: {
@@ -146,7 +146,18 @@ const app = Vue.createApp({
       }, 500);
       return false;
     },
+    onScroll: function() {
+      const scroll = $(window).scrollTop();
+      if (scroll > 400) {
+        $('.global__page-top').addClass('block');
+      } else {
+        $('.global__page-top').removeClass('block');
+      }
+    }
   },
+  created: function() {
+    $(window).on('scroll', this.onScroll)
+  }
 });
 
 app.directive("tooltip", {

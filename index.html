@@ -6,6 +6,7 @@
   <title>Search Image</title>
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
   <div id="app">
@@ -13,7 +14,8 @@
       <div class="global__container">
         <header class="header">
           <div class="header__image"></div>
-          <h2 class="header__sub">写真を検索する</h3>
+          <h2 class="header__sub" v-if="isInitialized">写真を検索する</h2>
+          <h2 class="header__sub not" v-else-if="isNotFound">写真が見つかりませんでした。<br>別の言葉で検索してみてください</h2>
           <div class="header__container">
             <h2 class="header__title">写真を検索する</h2>
             <form class="header__form" @submit.prevent="fetchImagesFromFlickr">
@@ -22,9 +24,12 @@
                 <img src="assets/img/search.png" alt="検索">
               </button>
             </form>
-            <p class="header__text">検索してください</p>
+            <p class="header__text" v-if="isInitialized">検索してください</p>
+            <p class="header__text" v-else-if="isFetching">検索中です</p>
+            <p class="header__text" v-else-if="isFailed">データの取得に失敗しました。しばらく時間を置いてから、再度お試しください</p>
+            <p class="header__text" v-else-if="isNotFound">写真が見つかりませんでした。<br>別の言葉で検索してみてください</p>
           </div>
-          <div class="header__scroll">
+          <div class="header__scroll" v-if="isFound">
             <span>Scroll</span>
           </div>
         </header>
@@ -32,7 +37,7 @@
           <div id="gallery" class="gallery">
             <div class="gallery__box">
               <template v-if="isFound">
-                <div :class="['gallery__area', {'show': isShow, 'inshow': !isShow}]">
+                <div class="gallery__area">
                   <a
                     v-for="photo in photos"
                     :key="photo.id"
@@ -83,7 +88,6 @@
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/vue@next"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
