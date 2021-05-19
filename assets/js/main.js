@@ -48,6 +48,7 @@ const app = Vue.createApp({
       prevSearchText: '',
       currentState: IS_INITIALIZED,
       isActive: false,
+      isShow: false,
     }
   },
   computed: {
@@ -70,18 +71,23 @@ const app = Vue.createApp({
   methods: {
     toInitialized: function() {
       this.currentState = IS_INITIALIZED;
+      this.isShow = true;
     },
     toFetching: function() {
       this.currentState = IS_FETCHING;
+      this.isShow = true;
     },
     toFailed: function() {
       this.currentState = IS_FAILED;
+      this.isShow = false;
     },
     toFound: function() {
       this.currentState = IS_FOUND;
+      this.isShow = true;
     },
     toNotFound: function() {
       this.currentState = IS_NOTFOUND;
+      this.isShow = false;
     },
     fetchImagesFromFlickr: function(event) {
       const searchText = event.target.elements.search.value;
@@ -105,6 +111,7 @@ const app = Vue.createApp({
 
         if (fetchedPhotos.length === 0) {
           this.toNotFound();
+          this.photos = [];
           return;
         }
 
@@ -125,7 +132,6 @@ const app = Vue.createApp({
       } else {
         this.isActive = true
       }
-      this.toInitialized();
     },
     onClickClose: function() {
       if (!this.isActive) {

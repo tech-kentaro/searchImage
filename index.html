@@ -32,7 +32,7 @@
           <div id="gallery" class="gallery">
             <div class="gallery__box">
               <template v-if="isFound">
-                <div class="gallery__area" v-if="isFailed">
+                <div :class="['gallery__area', {'show': isShow, 'inshow': !isShow}]">
                   <a
                     v-for="photo in photos"
                     :key="photo.id"

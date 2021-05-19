@@ -685,4 +685,12 @@ a {
   -webkit-transition-delay: 0.14s;
           transition-delay: 0.14s;
 }
+
+.show {
+  display: block;
+}
+
+.inshow {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */
